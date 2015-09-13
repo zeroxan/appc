@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://appb/ServiceB" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ServiceBService" targetNamespace="http://appb/ServiceB">
+  <wsdl:message name="minusResponse">
+    <wsdl:part name="return" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="minus">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IServiceB">
+    <wsdl:operation name="minus">
+      <wsdl:input message="tns:minus" name="minus">
+    </wsdl:input>
+      <wsdl:output message="tns:minusResponse" name="minusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceBServiceSoapBinding" type="tns:IServiceB">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="minus">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="minus">
+        <soap:body namespace="http://appb/ServiceB" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="minusResponse">
+        <soap:body namespace="http://appb/ServiceB" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceBService">
+    <wsdl:port binding="tns:ServiceBServiceSoapBinding" name="ServiceBPort">
+      <soap:address location="http://localhost:9080/appb/ServiceBService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

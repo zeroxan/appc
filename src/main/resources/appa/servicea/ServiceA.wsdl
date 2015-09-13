@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://appa/ServiceA" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ServiceAService" targetNamespace="http://appa/ServiceA">
+  <wsdl:message name="plusResponse">
+    <wsdl:part name="return" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="plus">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IServiceA">
+    <wsdl:operation name="plus">
+      <wsdl:input message="tns:plus" name="plus">
+    </wsdl:input>
+      <wsdl:output message="tns:plusResponse" name="plusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceAServiceSoapBinding" type="tns:IServiceA">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="plus">
+      <soap:operation soapAction="" style="rpc"></soap:operation>
+      <wsdl:input name="plus">
+        <soap:body namespace="http://appa/ServiceA" use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="plusResponse">
+        <soap:body namespace="http://appa/ServiceA" use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceAService">
+    <wsdl:port binding="tns:ServiceAServiceSoapBinding" name="ServiceAPort">
+      <soap:address location="http://localhost:9080/appa/ServiceAService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
