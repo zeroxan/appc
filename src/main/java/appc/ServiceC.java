@@ -1,12 +1,6 @@
 package appc;
 
-import java.text.DateFormat;
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.ejb.LocalBean;
@@ -16,13 +10,6 @@ import javax.ejb.TransactionAttributeType;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.handler.MessageContext;
-
-import appa.servicea.IServiceA;
-import appa.servicea.ServiceAService;
-import appb.serviceb.IServiceB;
-import appb.serviceb.ServiceBService;
 
 @Stateless
 @LocalBean
